@@ -19,6 +19,12 @@ if [ ! -f "$SKILL_SOURCE/SKILL.md" ]; then
   exit 1
 fi
 
+# Check Claude Code installation
+if [ ! -d "$HOME/.claude" ]; then
+  echo "WARNING: ~/.claude/ not found. Is Claude Code installed?"
+  echo "Install Claude Code first: https://docs.anthropic.com/en/docs/claude-code"
+fi
+
 # Create parent directory
 mkdir -p "$HOME/.claude/skills"
 
