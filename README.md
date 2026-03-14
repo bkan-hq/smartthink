@@ -2,7 +2,7 @@
 
 **천재적 사고 엔진 시스템** — A genius-level thinking engine for [Claude Code](https://docs.anthropic.com/en/docs/claude-code).
 
-SmartThink combines 9 thinking frameworks (52+ mental models, TRIZ innovation principles, antifragile strategy, and more) with Cynefin-based situation diagnosis to deliver deep, creative analysis on any topic.
+SmartThink combines 9 thinking frameworks (81 mental models, TRIZ innovation principles, antifragile strategy, and more) with Cynefin-based situation diagnosis to deliver deep, creative analysis on any topic.
 
 ## Features
 

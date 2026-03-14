@@ -27,8 +27,7 @@ If {EVOLUTION_STATE} is not "없음" and contains insights (not just placeholder
 1. **Core insights** — In Step 1 (module loading), use past insights to adjust your analytical lens within the selected modules (do NOT change module selection — it was finalized by the main agent)
 2. **Active gaps** — In Step 2 (multi-layer analysis), consciously compensate for perspectives that were lacking in the past
 3. **Pending evolution actions** — Report to user after analysis (do NOT change analysis flow)
-- **Bias warning**: Past insights may not fit the current problem. The Cynefin diagnosis ({CYNEFIN}) ALWAYS takes priority over past insights.
-- **Diversity awareness**: Module selection was already finalized by the main agent. This is informational only — use it to adjust analytical lens within the selected modules, not to change module selection.
+- **Lens adjustment only**: Use evolution state to adjust analytical depth within selected modules — do NOT change module selection. Cynefin diagnosis ({CYNEFIN}) always overrides past insights.
 
 ### Step 1: Load Selected Modules
 
