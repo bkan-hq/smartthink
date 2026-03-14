@@ -74,7 +74,7 @@ For each idea include:
 
 1. Create directory: `mkdir -p {DATA_DIR}/briefs/{YYYY-MM}/{DDHHmm}-{topic-slug}/`
    - `{YYYY-MM}`: current year-month (e.g., `2026-02`)
-   - `topic-slug`: 2-4 core words from topic in kebab-case (max 30 chars, alphanumeric and hyphens ONLY — strip all other characters including `/`, `.`, `\`)
+   - `topic-slug`: 2-4 English keywords from topic in kebab-case (max 30 chars, ASCII alphanumeric and hyphens ONLY). For non-English topics, extract or transliterate core concepts to English (e.g., "AI 스타트업 아이디어" → `ai-startup-ideas`)
 2. Write `brief.md` in the format below:
 
 ```markdown
@@ -244,8 +244,6 @@ Your final output MUST follow this EXACT format in Korean.
 - 새 발견: ...
 - 롤라팔루자 여부: Yes/No
 
-### Brief Export (implementable topics only)
-Brief 저장: `{DATA_DIR}/briefs/{YYYY-MM}/{dir-name}/brief.md`
 ```
 
 ## Guidelines
