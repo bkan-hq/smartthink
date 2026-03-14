@@ -7,7 +7,7 @@ SmartThink combines 9 thinking frameworks (52+ mental models, TRIZ innovation pr
 ## Features
 
 - **Cynefin Diagnosis** — Automatically classifies your problem domain (Clear/Complicated/Complex/Chaotic) and routes to the optimal thinking approach
-- **9 Reference Modules** — Core Engines (10 engines), Unicorn Playbook, Reality Distortion, Cognitive Arsenal (52 mental models), Pattern Synthesis, Execution Velocity, Antifragile Strategy, TRIZ Innovation, Meta-Cognition
+- **9 Reference Modules** — Core Engines (12 engines), Unicorn Playbook, Reality Distortion, Cognitive Arsenal (81 mental models), Pattern Synthesis, Execution Velocity, Antifragile Strategy, TRIZ Innovation, Meta-Cognition
 - **3 Modes** — Deep (full analysis), Light (quick analysis), Search (deep + web search)
 - **Sub-agent Architecture** — Offloads full analysis to a sub-agent, saving 95% of main context
 - **Evolution System** — Learns from each session; insights accumulate, gaps are tracked, module selection improves over time
@@ -16,6 +16,7 @@ SmartThink combines 9 thinking frameworks (52+ mental models, TRIZ innovation pr
 ## Requirements
 
 - [Claude Code](https://docs.anthropic.com/en/docs/claude-code) CLI installed and configured
+- macOS or Linux (Windows users: use [WSL2](https://learn.microsoft.com/en-us/windows/wsl/))
 
 ## Installation
 
@@ -65,22 +66,24 @@ Deep analysis + web search data for reality validation.
 
 ## Evolution System
 
-SmartThink improves over time. After each Deep analysis session:
-- Effective module combinations are recorded as insights (max 10 slots)
-- Gaps in thinking are tracked (max 5 slots)
-- Module diversity is monitored via Shannon entropy (H score)
-- When a gap occurs 3+ times, specific evolution actions are generated
+SmartThink learns from each session and gets smarter over time:
+- Effective thinking patterns are remembered (up to 10 insights)
+- Blind spots are tracked and compensated in future sessions
+- Module variety is monitored to prevent over-reliance on any single framework
 
-Data is stored in `skill/.data/evolution-state.md`.
+Data is stored in `skill/.data/evolution-state.md`. To preserve your insights across machines, commit periodically:
+```bash
+cd smartthink && git add skill/.data/evolution-state.md && git commit -m "update insights"
+```
 
 ## Thinking Modules
 
 | Module | Key Frameworks |
 |--------|---------------|
-| Core Engines | First Principles, Asymmetric Opportunity, Network Effects, Market Creation, Moat Building, Contrarian Validation, Value Capture, Timing Intelligence, Compound Advantage, Ecosystem Design |
+| Core Engines | First Principles, Asymmetric Opportunity, Network Effects, Market Creation, Moat Building, Contrarian Validation, Value Capture, Timing Intelligence, Compound Advantage, Ecosystem Design, Inversion, Lollapalooza Detection |
 | Unicorn Playbook | $0-to-$1B business building (6 phases) |
 | Reality Distortion | Constraint Inversion, Category Creation, Temporal Arbitrage |
-| Cognitive Arsenal | 52 mental models across 6 disciplines |
+| Cognitive Arsenal | 81 mental models across 9 disciplines |
 | Pattern Synthesis | Cross-domain pattern recognition, Weak signal detection |
 | Execution Velocity | OODA Loop, Decision frameworks, Blitzscaling |
 | Antifragile Strategy | Barbell Strategy, Optionality, Black Swan positioning |
