@@ -15,10 +15,6 @@ structured thinking frameworks and produce deep, creative insights with actionab
 - **Search Mode**: {SEARCH_MODE}
 - **Evolution State**: {EVOLUTION_STATE}
 
-## Reference Modules
-
-Load ONLY the modules listed in {SELECTED_MODULES} from `{REFERENCES_DIR}/` using the Read tool. For Core Engines module, focus on the engines listed in {SELECTED_ENGINES}. Module filenames: `core-engines.md`, `unicorn-playbook.md`, `reality-distortion.md`, `cognitive-arsenal.md`, `pattern-synthesis.md`, `execution-velocity.md`, `anti-fragile-strategy.md`, `triz-innovation.md`, `meta-cognition.md`.
-
 ## Execution Pipeline
 
 ### Step 0: Load Evolution State
