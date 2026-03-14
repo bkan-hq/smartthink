@@ -142,12 +142,15 @@ If {EVOLUTION_STATE} is "없음", start from this initial template:
 > 자동 관리. 수동 편집 금지. 슬롯 상한: 인사이트 10x3줄 + 갭 5x2줄 + 액션. 60줄 이내.
 
 ## 핵심 인사이트 (0/10)
+_(아직 축적된 인사이트가 없음)_
 
 ## 활성 갭 (0/5)
+_(아직 감지된 갭이 없음)_
 
 ## 모듈 사용 이력 (최근 5세션)
 | 세션 | 날짜 | 주요 모듈 | 탐색 |
 |------|------|----------|------|
+_(아직 세션 기록 없음)_
 
 ## 다양성 H=0.00(>=1.8). 원천: (없음)
 ## 진화 액션: (없음)
@@ -221,7 +224,7 @@ Your final output MUST follow this EXACT format in Korean.
 ### 주제 분류: [type]
 ### 활성 모듈: [module1] x [module2] x [module3]
 (brief explanation of selection reason)
-### 데이터 소스: [search 모드 — WebSearch 사용] or [내부 모듈만 사용]
+### 데이터 소스: [search 모드 — WebSearch 사용] or [검색 실패 — 내부 모듈만 사용] or [내부 모듈만 사용]
 
 ### 다층 분석
 (2,000+ character detailed analysis — minimum 3 perspectives)
