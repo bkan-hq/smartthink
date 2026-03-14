@@ -44,7 +44,7 @@ Full analysis using selected thinking modules. Produces 10+ ideas with feasibili
 ```
 /smartthink light 1인 기업의 확장 전략
 ```
-Quick analysis using First Principles only. No module loading. ~5% context usage.
+Quick analysis using First Principles + Cynefin routing + past insights. No module loading. ~5% context usage.
 
 ### Search-Enhanced Analysis
 ```
