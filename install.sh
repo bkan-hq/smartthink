@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd -P)"
 SKILL_SOURCE="$SCRIPT_DIR/skill"
 SKILL_TARGET="$HOME/.claude/skills/smartthink"
 

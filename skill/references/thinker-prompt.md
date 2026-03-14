@@ -42,14 +42,18 @@ If {EVOLUTION_STATE} is not "없음" and contains insights (not just placeholder
 ### Step 1: Load Selected Modules
 
 - Read the reference files for modules listed in {SELECTED_MODULES} from `{REFERENCES_DIR}/`
+- Korean name → filename mapping:
+  핵심 엔진 → core-engines.md | 유니콘 플레이북 → unicorn-playbook.md | 현실 왜곡 → reality-distortion.md | 인지 무기고 → cognitive-arsenal.md | 패턴 합성 → pattern-synthesis.md | 실행 속도 → execution-velocity.md | 안티프래질 전략 → anti-fragile-strategy.md | TRIZ 혁신 시스템 → triz-innovation.md | 메타인지 → meta-cognition.md
+- For Core Engines module: focus on the engines listed in {SELECTED_ENGINES} (if "해당없음", skip engine filtering)
 - After reading, internalize the frameworks and operational procedures from each module
 
 ### Step 2: Multi-Layer Analysis (minimum 2,000 characters)
 
 - Cross-apply the selected module frameworks to analyze the topic
 - Analyze from at minimum **3 different perspectives** (multi-dimensional analysis)
-- Apply mathematical models from Core Engines for **quantitative judgment**
-- Use Cognitive Arsenal mental models to check **blind spots**
+- If Core Engines is in {SELECTED_MODULES}: apply its mathematical models for **quantitative judgment**
+- If Cognitive Arsenal is in {SELECTED_MODULES}: use its mental models to check **blind spots**
+- If neither is selected: apply first-principles quantitative reasoning and identify blind spots from loaded modules
 - Consciously explore **counter-intuitive insights** in each analysis
 - **(If search data present)** Use search results as a **reality validation perspective** — cross-validate framework analysis with real data to strengthen evidence
 
@@ -130,7 +134,24 @@ Perform two tasks after analysis: (A) include metacognition log in output, (B) u
   3. **Were new models/patterns discovered?** — new thinking patterns not in existing modules
   4. **Was Lollapalooza effect detected?**
 
-**(B) Evolution state update** — Use {EVOLUTION_STATE} as the current file content base (or create initial template if "없음"), then apply the semantic merge protocol below and Write the full result to `{DATA_DIR}/evolution-state.md`.
+**(B) Evolution state update** — Use {EVOLUTION_STATE} as the current file content base, then apply the semantic merge protocol below and Write the full result to `{DATA_DIR}/evolution-state.md`.
+
+If {EVOLUTION_STATE} is "없음", start from this initial template:
+```
+# SmartThink 진화 상태 (Evolution State)
+> 자동 관리. 수동 편집 금지. 슬롯 상한: 인사이트 10x3줄 + 갭 5x2줄 + 액션. 60줄 이내.
+
+## 핵심 인사이트 (0/10)
+
+## 활성 갭 (0/5)
+
+## 모듈 사용 이력 (최근 5세션)
+| 세션 | 날짜 | 주요 모듈 | 탐색 |
+|------|------|----------|------|
+
+## 다양성 H=0.00(>=1.8). 원천: (없음)
+## 진화 액션: (없음)
+```
 
 #### Semantic Merge Protocol
 
@@ -181,7 +202,7 @@ Evolution action (1 line each):
 - 형식: `| {N} | {YYYY-MM-DD} | 주요모듈1, 주요모듈2 | 탐색주제 |`
 
 **Diversity H-score update:**
-- 다양성 라인 형식: `## 다양성 H={float}(>={threshold}). 원천: {모듈명}{N}, {모듈명}{N}, ...`
+- 다양성 라인 형식: `## 다양성 H={float}(>=1.8). 원천: {모듈명}{N}, {모듈명}{N}, ...`
 - 인사이트의 원천모듈 분포에서 Shannon entropy를 계산하여 H 값을 갱신한다.
 
 **Line count verification**: If file exceeds 60 lines after update, evict 1 most generic insight to fit under 60.
@@ -190,7 +211,8 @@ Evolution action (1 line each):
 
 ## Output Format
 
-Your final output MUST follow this EXACT format in Korean:
+Your final output MUST follow this EXACT format in Korean.
+> In the template below, `(text in parentheses)` after a header is a writing instruction — do NOT include it in output. `[text in brackets]` is a placeholder — replace with actual content.
 
 ```markdown
 ## SmartThink 분석: [topic]
