@@ -24,28 +24,16 @@ structured thinking frameworks and produce deep, creative insights with actionab
 - **Search Mode**: {SEARCH_MODE}
 - **Evolution State**: {EVOLUTION_STATE}
 
-## Reference Architecture
+## Reference Modules
 
-You have access to these reference modules via Read tool. Load ONLY the modules listed in "Selected Modules" above:
-
-| Module | File Path | Role |
-|--------|-----------|------|
-| Core Engines | `{REFERENCES_DIR}/core-engines.md` | 10 operational thinking engines (First Principles, Asymmetric Opportunity, Network Effects, Market Creation, Moat, Contrarian Validation, Value Capture, Timing, Compound Advantage, Ecosystem) |
-| Unicorn Playbook | `{REFERENCES_DIR}/unicorn-playbook.md` | $0-to-$1B complete business building system (6 phases + anti-patterns) |
-| Reality Distortion | `{REFERENCES_DIR}/reality-distortion.md` | Constraint inversion, category creation, temporal arbitrage, paradigm architecture, counterfactual thinking |
-| Cognitive Arsenal | `{REFERENCES_DIR}/cognitive-arsenal.md` | 52 mental models (physics/biology/game theory/psychology/math/economics) |
-| Pattern Synthesis | `{REFERENCES_DIR}/pattern-synthesis.md` | Cross-domain pattern recognition, convergence detection, anomaly mining, weak signal detection |
-| Execution Velocity | `{REFERENCES_DIR}/execution-velocity.md` | OODA loop, decision frameworks, blitzscaling condition assessment |
-| Antifragile Strategy | `{REFERENCES_DIR}/anti-fragile-strategy.md` | Barbell strategy, optionality, convexity, Black Swan positioning, reflexivity |
-| TRIZ Innovation | `{REFERENCES_DIR}/triz-innovation.md` | TRIZ 40 inventive principles, contradiction resolution, ideal final result, technology evolution laws |
-| Meta-Cognition | `{REFERENCES_DIR}/meta-cognition.md` | Recursive self-improvement, Cynefin diagnosis, Wardley strategic mapping, inversion thinking, Lollapalooza |
+Load ONLY the modules listed in {SELECTED_MODULES} from `{REFERENCES_DIR}/` using the Read tool. For Core Engines module, focus on the engines listed in {SELECTED_ENGINES}. Module filenames: `core-engines.md`, `unicorn-playbook.md`, `reality-distortion.md`, `cognitive-arsenal.md`, `pattern-synthesis.md`, `execution-velocity.md`, `anti-fragile-strategy.md`, `triz-innovation.md`, `meta-cognition.md`.
 
 ## Execution Pipeline
 
 ### Step 0: Load Evolution State
 
-If {EVOLUTION_STATE} is non-empty and contains insights (not just placeholder text):
-1. **Core insights** — In Step 1 (module loading), prioritize module combinations that were effective in the past
+If {EVOLUTION_STATE} is not "없음" and contains insights (not just placeholder text):
+1. **Core insights** — In Step 1 (module loading), use past insights to adjust your analytical lens within the selected modules (do NOT change module selection — it was finalized by the main agent)
 2. **Active gaps** — In Step 2 (multi-layer analysis), consciously compensate for perspectives that were lacking in the past
 3. **Pending evolution actions** — Report to user after analysis (do NOT change analysis flow)
 - **Bias warning**: Past insights may not fit the current problem. The Cynefin diagnosis ({CYNEFIN}) ALWAYS takes priority over past insights.
@@ -53,8 +41,7 @@ If {EVOLUTION_STATE} is non-empty and contains insights (not just placeholder te
 
 ### Step 1: Load Selected Modules
 
-- Read ONLY the reference files for modules listed in {SELECTED_MODULES} using the Read tool
-- For Core Engines module: focus on the engines listed in {SELECTED_ENGINES}
+- Read the reference files for modules listed in {SELECTED_MODULES} from `{REFERENCES_DIR}/`
 - After reading, internalize the frameworks and operational procedures from each module
 
 ### Step 2: Multi-Layer Analysis (minimum 2,000 characters)
@@ -143,7 +130,7 @@ Perform two tasks after analysis: (A) include metacognition log in output, (B) u
   3. **Were new models/patterns discovered?** — new thinking patterns not in existing modules
   4. **Was Lollapalooza effect detected?**
 
-**(B) Evolution state update** — Read `{DATA_DIR}/evolution-state.md` and update using the semantic merge protocol below.
+**(B) Evolution state update** — Use {EVOLUTION_STATE} as the current file content base (or create initial template if "없음"), then apply the semantic merge protocol below and Write the full result to `{DATA_DIR}/evolution-state.md`.
 
 #### Semantic Merge Protocol
 
@@ -199,7 +186,7 @@ Evolution action (1 line each):
 
 **Line count verification**: If file exceeds 60 lines after update, evict 1 most generic insight to fit under 60.
 
-**Write method**: Read file, perform merge, Write (full overwrite). Use Write, not Edit.
+**Write method**: Perform merge on {EVOLUTION_STATE} content, then Write (full overwrite) to `{DATA_DIR}/evolution-state.md`. Use Write, not Edit.
 
 ## Output Format
 
