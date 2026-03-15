@@ -69,6 +69,7 @@ For each idea include:
 
 1. Create directory: `mkdir -p {DATA_DIR}/briefs/{YYYY-MM}/{DDHHmm}-{topic-slug}/`
    - `{YYYY-MM}`: current year-month (e.g., `2026-02`)
+   - `{DDHHmm}`: 일(DD) + 시(HH) + 분(mm), 반드시 6자리 (e.g., `141530` = 14일 15시 30분). 시간 생략 금지.
    - `topic-slug`: 2-4 English keywords from topic in kebab-case (max 30 chars, ASCII alphanumeric and hyphens ONLY). For non-English topics, extract or transliterate core concepts to English (e.g., "AI 스타트업 아이디어" → `ai-startup-ideas`). **Validation**: If the generated slug contains any character matching `[^a-zA-Z0-9-]`, replace it with `unknown-topic`
 2. Write `brief.md` in the format below:
 
@@ -76,7 +77,7 @@ For each idea include:
 # SmartThink Brief
 
 ## 메타데이터
-- 생성일시: {YYYY-MM-DD HH:mm}
+- 생성일시: {YYYY-MM-DD HH:mm} (시:분 필수, e.g., 2026-03-14 15:30)
 - 원본 주제: {topic}
 - Cynefin: {diagnosis result}
 - 분류: {type}
@@ -166,22 +167,24 @@ Extract **insight candidates** and **gap candidates** from (A), then merge with 
 | **New gap** | Add to empty slot (count=1). If all 5 full, evict oldest/lowest-count gap. |
 | **Resolved gap** (solved in this session) | Delete gap, free slot. |
 
-**Slot format (strict):**
+**Slot format — MANDATORY (이 형식을 정확히 따르지 않으면 다음 세션의 시맨틱 머지가 실패한다):**
 
-Insight (3 lines each):
+> **금지**: 번호 목록(`1.`, `2.`) 사용 금지 — 반드시 불릿(`-`)만 사용한다.
+
+Insight — 반드시 불릿 + 3줄. 1줄로 압축 금지:
 ```
 - **[combination/pattern name]**: [core content 1 line]
   적용 맥락: [what type of problem it's effective for, 1 line]
   근거: [why it's effective, 1 line]
 ```
 
-Gap (2 lines each):
+Gap — 반드시 불릿 + 2줄. `(발생 {N}회)` 카운트 필수:
 ```
 - **[lacking area]** (발생 {N}회): [what's needed, 1 line]
   상황: [what type of problem showed the lack, 1 line]
 ```
 
-Evolution action (1 line each):
+Evolution action — 반드시 체크박스 형식. 헤더에 직접 서술 금지:
 ```
 - [ ] [specific action]: [which gap triggered it]
 ```
@@ -192,6 +195,7 @@ Evolution action (1 line each):
 
 **Diversity H-score update:**
 - 다양성 라인 형식: `## 다양성 H={float}(>=1.8). 원천: {모듈명}{N}, {모듈명}{N}, ...`
+- `{N}`은 해당 모듈이 원천인 인사이트 수 (예: `핵심엔진3, 현실왜곡1`). 횟수 없이 모듈명만 나열하면 Shannon entropy 계산 불가 — 반드시 횟수 포함.
 - 인사이트의 원천모듈 분포에서 Shannon entropy를 계산하여 H 값을 갱신한다.
 
 **Line count verification**: If file exceeds 60 lines after update, evict 1 most generic insight to fit under 60.

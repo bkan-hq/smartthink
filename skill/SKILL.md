@@ -35,9 +35,11 @@ disable-model-invocation: true
 ```
 IF $ARGUMENTS가 "light " 또는 "경량 "으로 시작하면 (대소문자 무시)
   → 주제 = $ARGUMENTS에서 접두사 이후의 텍스트
+  → 주제가 비어있거나 공백만 있으면 → 사용법 안내 후 종료
   → "Light 모드 실행" 섹션으로 이동
 ELSE IF $ARGUMENTS가 "search " 또는 "검색 "으로 시작하면 (대소문자 무시)
   → 주제 = $ARGUMENTS에서 접두사 이후의 텍스트
+  → 주제가 비어있거나 공백만 있으면 → 사용법 안내 후 종료
   → WebSearch("<주제>") 호출 → "WebSearch 결과 처리" 섹션에 따라 SEARCH_DATA, SEARCH_MODE 할당
   → "Deep 모드 실행" 섹션으로 이동
 ELSE
