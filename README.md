@@ -4,21 +4,11 @@
 
 SmartThink combines 9 thinking frameworks (81 mental models, TRIZ innovation principles, antifragile strategy, and more) with Cynefin-based situation diagnosis to deliver deep, creative analysis on any topic.
 
-## Features
+---
 
-- **Cynefin Diagnosis** — Automatically classifies your problem domain (Clear/Complicated/Complex/Chaotic) and routes to the optimal thinking approach
-- **9 Reference Modules** — Core Engines (12 engines), Unicorn Playbook, Reality Distortion, Cognitive Arsenal (81 mental models), Pattern Synthesis, Execution Velocity, Antifragile Strategy, TRIZ Innovation, Meta-Cognition
-- **3 Modes** — Deep (full analysis), Light (quick analysis), Search (deep + web search)
-- **Sub-agent Architecture** — Offloads full analysis to a sub-agent, saving 95% of main context
-- **Evolution System** — Learns from each session; insights accumulate, gaps are tracked, module selection improves over time
-- **Brief Export** — Generates actionable briefs for implementable topics
+## Quick Start
 
-## Requirements
-
-- [Claude Code](https://docs.anthropic.com/en/docs/claude-code) CLI installed and configured
-- macOS or Linux (Windows users: use [WSL2](https://learn.microsoft.com/en-us/windows/wsl/))
-
-## Installation
+### 1. Install
 
 ```bash
 git clone https://github.com/bkan-hq/smartthink.git
@@ -27,54 +17,135 @@ chmod +x install.sh uninstall.sh
 ./install.sh
 ```
 
-This creates a symlink: `~/.claude/skills/smartthink` → the repo's `skill/` directory.
+### 2. Open a new Claude Code session
 
-Your evolution state and briefs are stored in `skill/.data/` within the cloned repo.
+```bash
+claude
+```
 
-## Usage
+> **Important**: Start a **new** session after installation. Existing sessions won't recognize the skill.
 
-In any Claude Code session:
+### 3. Try it
+
+```
+/smartthink 1인 기업의 확장 전략
+```
+
+That's it! SmartThink will diagnose your topic, select the best thinking frameworks, and produce a full analysis with 10+ actionable ideas.
+
+---
+
+## Three Modes
 
 ### Deep Analysis (default)
+
+Full analysis with 9 reference modules. Produces 10+ ideas with feasibility, impact, and risk assessment.
+
 ```
 /smartthink AI 스타트업에서 네트워크 효과를 만드는 방법
 ```
-Full analysis using selected thinking modules. Produces 10+ ideas with feasibility assessment.
+
+**What you get:**
+- Cynefin domain diagnosis (Clear / Complicated / Complex / Chaotic)
+- Multi-layer analysis from 3+ perspectives
+- 10+ genius ideas with engine/model used, feasibility, expected impact
+- Top 3 with unicorn potential assessment and execution roadmap
+- Actionable next steps
+- Brief export (if the topic has implementable tasks)
 
 ### Light Analysis
+
+Quick analysis without loading reference modules. Uses ~5% of context.
+
 ```
-/smartthink light 1인 기업의 확장 전략
+/smartthink light 사이드 프로젝트 아이디어
 ```
-Quick analysis using First Principles + Cynefin routing + past insights. No module loading. ~5% context usage.
+
+**When to use:** Quick brainstorming, simple questions, or when you want to save context for other work.
 
 ### Search-Enhanced Analysis
+
+Deep analysis + real-time web search for data-backed insights.
+
 ```
 /smartthink search 2026년 SaaS 시장 트렌드
 ```
-Deep analysis + web search data for reality validation.
 
-## How It Works
+**When to use:** Topics that need current market data, competitor analysis, or trend validation.
 
-1. **Path Resolution** — Dynamically resolves file paths based on installation location
-2. **Cynefin Diagnosis** — Classifies the problem domain
-3. **Module Selection** — Picks 2-3 optimal thinking modules based on topic type
-4. **Sub-agent Spawn** — Delegates full analysis to a dedicated sub-agent with selected modules
-5. **Multi-Layer Analysis** — Cross-applies frameworks from 3+ perspectives
-6. **Idea Generation** — 10+ ideas with engines used, feasibility, impact, and risk
-7. **Synthesis** — Top 3 with unicorn potential, execution roadmap, killer assumptions
-8. **Metacognition** — Records what worked, what was lacking, updates evolution state
+---
+
+## What Happens Behind the Scenes
+
+```
+You type: /smartthink 주제
+         ↓
+    ┌─────────────────────────┐
+    │  Main Agent (~300 tok)  │
+    │  1. Cynefin 진단         │
+    │  2. 모듈 선택            │
+    │  3. 서브에이전트 스폰      │
+    └──────────┬──────────────┘
+               ↓
+    ┌─────────────────────────┐
+    │  Sub-agent (full analysis)│
+    │  - 선택된 모듈 로딩       │
+    │  - 다층 분석 (3+ 관점)    │
+    │  - 10+ 아이디어 생성      │
+    │  - Top 3 유니콘 평가      │
+    │  - Brief 내보내기         │
+    │  - 진화 상태 업데이트      │
+    └─────────────────────────┘
+```
+
+Main agent does only diagnosis + routing (~300 tokens), then delegates the full analysis to a sub-agent. This saves **95% of your main context window**.
+
+---
 
 ## Evolution System
 
-SmartThink learns from each session and gets smarter over time:
-- Effective thinking patterns are remembered (up to 10 insights)
-- Blind spots are tracked and compensated in future sessions
-- Module variety is monitored to prevent over-reliance on any single framework
+SmartThink learns from each session and gets smarter over time.
 
-Data is stored in `skill/.data/evolution-state.md`. To preserve your insights across machines, commit periodically:
-```bash
-cd smartthink && git add skill/.data/evolution-state.md && git commit -m "update insights"
+**How it works:**
+- After each analysis, SmartThink records what worked and what was lacking
+- Effective thinking patterns are saved as **insights** (up to 10 slots)
+- Blind spots are tracked as **gaps** (up to 5 slots)
+- Module diversity is monitored — if you over-rely on one framework, SmartThink nudges you toward others
+
+**Example after 3 sessions:**
 ```
+## 핵심 인사이트 (3/10)
+- **AI 레버리지 = 스케일 상한선 제거**: AI가 1인 기업의 매출 상한을 해방
+  적용 맥락: 1인 사업에서 팀 규모 제약 극복 시
+  근거: 전기가 공장 규모를 해방시킨 것과 동일 구조
+
+## 다양성 H=2.13(>=1.8). 원천: 핵심엔진3, 현실왜곡1, 패턴합성1
+```
+
+Your evolution data is stored in `skill/.data/evolution-state.md`. To preserve across machines:
+
+```bash
+cd smartthink
+git add skill/.data/evolution-state.md
+git commit -m "update insights"
+```
+
+---
+
+## Brief Export
+
+When your topic has **implementable tasks** (code, system setup, etc.), SmartThink automatically generates a compressed brief:
+
+```
+skill/.data/briefs/
+  └── 2026-03/
+      └── 141530-seo-blog-automation/
+          └── brief.md          ← Top 3 ideas + execution plan
+```
+
+Briefs are gitignored by default (they contain session-specific analysis).
+
+---
 
 ## Thinking Modules
 
@@ -90,6 +161,15 @@ cd smartthink && git add skill/.data/evolution-state.md && git commit -m "update
 | TRIZ Innovation | 40 Inventive Principles, Contradiction resolution |
 | Meta-Cognition | Recursive self-improvement, Wardley Mapping, Lollapalooza |
 
+SmartThink automatically selects 2-3 modules based on your topic type (idea discovery, strategy, problem solving, etc.).
+
+---
+
+## Requirements
+
+- [Claude Code](https://docs.anthropic.com/en/docs/claude-code) CLI installed and configured
+- macOS or Linux (Windows: use [WSL2](https://learn.microsoft.com/en-us/windows/wsl/))
+
 ## Uninstallation
 
 ```bash
@@ -97,7 +177,7 @@ cd smartthink
 ./uninstall.sh
 ```
 
-Your evolution state and briefs remain in the repo. To fully remove, delete the cloned repo.
+Your evolution state and briefs remain in the repo. To fully remove, delete the cloned directory.
 
 ## License
 
