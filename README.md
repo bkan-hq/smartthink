@@ -39,10 +39,15 @@ That's it! SmartThink will diagnose your topic, select the best thinking framewo
 
 ### Deep Analysis (default)
 
-Full analysis with 9 reference modules. Produces 10+ ideas with feasibility, impact, and risk assessment.
+Full interactive analysis with 9 reference modules. The main agent loads frameworks into context and interactively refines direction with you. Produces 10+ ideas with feasibility, impact, and risk assessment.
 
 ```
 /smartthink AI 스타트업에서 네트워크 효과를 만드는 방법
+```
+
+Add `search` for data-backed analysis:
+```
+/smartthink search 2026년 SaaS 시장 트렌드
 ```
 
 **What you get:**
@@ -52,6 +57,16 @@ Full analysis with 9 reference modules. Produces 10+ ideas with feasibility, imp
 - Top 3 with unicorn potential assessment and execution roadmap
 - Actionable next steps
 - Brief export (if the topic has implementable tasks)
+
+### Agent Analysis
+
+Fully automated analysis delegated to a sub-agent (STSA). Same methodology as Deep mode, but all decisions are made automatically. Use when you want hands-off analysis.
+
+```
+/smartthink agent 1인 기업의 수익 모델 설계
+```
+
+**When to use:** You want the same depth as Deep mode but prefer fully automated analysis without interaction points.
 
 ### Light Analysis
 
@@ -63,42 +78,32 @@ Quick analysis without loading reference modules. Uses ~5% of context.
 
 **When to use:** Quick brainstorming, simple questions, or when you want to save context for other work.
 
-### Search-Enhanced Analysis
-
-Deep analysis + real-time web search for data-backed insights.
-
-```
-/smartthink search 2026년 SaaS 시장 트렌드
-```
-
-**When to use:** Topics that need current market data, competitor analysis, or trend validation.
-
 ---
 
 ## What Happens Behind the Scenes
 
 ```
-You type: /smartthink 주제
+You type: /smartthink [mode] 주제
          ↓
     ┌─────────────────────────┐
-    │  Main Agent (~300 tok)  │
+    │  Main Agent              │
     │  1. Cynefin 진단         │
-    │  2. 모듈 선택            │
-    │  3. 서브에이전트 스폰      │
+    │  2. 모듈 추천            │
+    │  3. 모드별 분기           │
     └──────────┬──────────────┘
                ↓
-    ┌─────────────────────────┐
-    │  Sub-agent (full analysis)│
-    │  - 선택된 모듈 로딩       │
-    │  - 다층 분석 (3+ 관점)    │
-    │  - 10+ 아이디어 생성      │
-    │  - Top 3 유니콘 평가      │
-    │  - Brief 내보내기         │
-    │  - 진화 상태 업데이트      │
-    └─────────────────────────┘
+    ┌──────────┼──────────────┐
+    │          │              │
+    ▼          ▼              ▼
+  Deep       Agent          Light
+  (inline)   (sub-agent)    (no refs)
+  - 모듈 직접  - STSA 위임    - 제1원리
+    로딩       - 자동 판단     - ~5% ctx
+  - 인터랙션   - 30 turns     - 3-5 ideas
+  - 10+ ideas - 10+ ideas
 ```
 
-Main agent does only diagnosis + routing (~300 tokens), then delegates the full analysis to a sub-agent. This saves **95% of your main context window**.
+**Deep** loads reference modules into main context and interacts with you. **Agent** delegates to a sub-agent (STSA) for hands-off analysis. **Light** does quick analysis without loading any reference files.
 
 ---
 
