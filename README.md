@@ -1,3 +1,5 @@
+English | [한국어](README.ko.md)
+
 # SmartThink
 
 **천재적 사고 엔진 시스템** — A genius-level thinking engine for [Claude Code](https://docs.anthropic.com/en/docs/claude-code).
